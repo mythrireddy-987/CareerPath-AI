@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Resources | CareerPath AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .resource-filters {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .resource-filters input,
+        .resource-filters select {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .resource-filters input:focus,
+        .resource-filters select:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .resource-card {
+            margin-bottom: 18px;
+        }
+
+        #noResults {
+            display: none;
+            text-align: center;
+            padding: 25px;
+            color: #666;
+            font-size: 17px;
+        }
+
+        .resource-count {
+            margin-bottom: 15px;
+            color: #555;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <header class="navbar">
+
+        <h2>CareerPath AI</h2>
+
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('profile') }}">Dashboard</a>
+            <a href="{{ url_for('roadmap') }}">Learning Roadmap</a>
+            <a href="{{ url_for('resources') }}">Resources</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Page Header -->
+
+    <section class="roadmap-header">
+
+        <h1>Learning Resources</h1>
+
+        <p>
+            Explore useful tutorials and learning materials
+            to improve your career skills.
+        </p>
+
+    </section>
+
+
+    <!-- Learning Resources -->
+
+    <section class="roadmap-container" id="resource-list">
+
+        <h2>Explore Learning Materials</h2>
+
+
+        <!-- Search and Career Filters -->
+
+        <div class="resource-filters">
+
+            <input
+                type="text"
+                id="resourceSearch"
+                placeholder="Search for a skill (e.g. Python, SQL, HTML)"
+            >
+
+            <select id="careerFilter">
+
+                <option value="all">All Careers</option>
+
+                <option value="frontend">Frontend Developer</option>
+
+                <option value="python">Python Developer</option>
+
+                <option value="data">Data Analyst</option>
+
+                <option value="cybersecurity">Cybersecurity Analyst</option>
+
+                <option value="machinelearning">Machine Learning Engineer</option>
+
+                <option value="uiux">UI/UX Designer</option>
+
+                <option value="fullstack">Full Stack Developer</option>
+
+                <option value="cloud">Cloud Engineer</option>
+
+            </select>
+
+        </div>
+
+
+        <p class="resource-count" id="resourceCount"></p>
+
+
+        <!-- FRONTEND DEVELOPER -->
+
+        <div class="resource-card" data-skill="HTML" data-careers="frontend fullstack">
+            <h3>HTML</h3>
+            <p>Learn the fundamentals of web page structure.</p>
+            <a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">Learn HTML</a>
+        </div>
+
+        <div class="resource-card" data-skill="CSS" data-careers="frontend fullstack">
+            <h3>CSS</h3>
+            <p>Learn how to style and design attractive websites.</p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">Learn CSS</a>
+        </div>
+
+        <div class="resource-card" data-skill="JavaScript" data-careers="frontend fullstack">
+            <h3>JavaScript</h3>
+            <p>Learn programming concepts and website interactivity.</p>
+            <a href="https://www.javascript.info/" target="_blank" rel="noopener noreferrer">Learn JavaScript</a>
+        </div>
+
+        <div class="resource-card" data-skill="React" data-careers="frontend fullstack">
+            <h3>React</h3>
+            <p>Learn how to build interactive user interfaces.</p>
+            <a href="https://react.dev/learn" target="_blank" rel="noopener noreferrer">Learn React</a>
+        </div>
+
+
+        <!-- PYTHON DEVELOPER -->
+
+        <div class="resource-card" data-skill="Python" data-careers="python data cybersecurity machinelearning">
+            <h3>Python</h3>
+            <p>Learn Python programming from the basics.</p>
+            <a href="https://www.python.org/about/gettingstarted/" target="_blank" rel="noopener noreferrer">Learn Python</a>
+        </div>
+
+        <div class="resource-card" data-skill="Django" data-careers="python">
+            <h3>Django</h3>
+            <p>Learn Python-based web application development.</p>
+            <a href="https://docs.djangoproject.com/en/stable/intro/tutorial01/" target="_blank" rel="noopener noreferrer">Learn Django</a>
+        </div>
+
+        <div class="resource-card" data-skill="SQL" data-careers="python data machinelearning">
+            <h3>SQL</h3>
+            <p>Learn database management and SQL queries.</p>
+            <a href="https://www.w3schools.com/sql/" target="_blank" rel="noopener noreferrer">Learn SQL</a>
+        </div>
+
+        <div class="resource-card" data-skill="Git" data-careers="python fullstack cloud">
+            <h3>Git</h3>
+            <p>Learn version control and project management.</p>
+            <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer">Learn Git</a>
+        </div>
+
+
+        <!-- DATA ANALYST -->
+
+        <div class="resource-card" data-skill="Excel" data-careers="data">
+            <h3>Excel</h3>
+            <p>Learn spreadsheets, formulas and data analysis.</p>
+            <a href="https://support.microsoft.com/en-us/excel" target="_blank" rel="noopener noreferrer">Learn Excel</a>
+        </div>
+
+        <div class="resource-card" data-skill="Power BI" data-careers="data">
+            <h3>Power BI</h3>
+            <p>Learn data visualization and business intelligence.</p>
+            <a href="https://learn.microsoft.com/en-us/training/powerplatform/power-bi/" target="_blank" rel="noopener noreferrer">Learn Power BI</a>
+        </div>
+
+
+        <!-- CYBERSECURITY ANALYST -->
+
+        <div class="resource-card" data-skill="Networking" data-careers="cybersecurity cloud">
+            <h3>Networking</h3>
+            <p>Understand computer networks and networking fundamentals.</p>
+            <a href="https://skillsforall.com/" target="_blank" rel="noopener noreferrer">Learn Networking</a>
+        </div>
+
+        <div class="resource-card" data-skill="Linux" data-careers="cybersecurity cloud">
+            <h3>Linux</h3>
+            <p>Learn Linux commands and operating system basics.</p>
+            <a href="https://linuxjourney.com/" target="_blank" rel="noopener noreferrer">Learn Linux</a>
+        </div>
+
+        <div class="resource-card" data-skill="Cybersecurity Fundamentals" data-careers="cybersecurity">
+            <h3>Cybersecurity Fundamentals</h3>
+            <p>Understand cybersecurity concepts and digital safety.</p>
+            <a href="https://skillsforall.com/" target="_blank" rel="noopener noreferrer">Learn Cybersecurity</a>
+        </div>
+
+        <div class="resource-card" data-skill="SIEM" data-careers="cybersecurity">
+            <h3>SIEM</h3>
+            <p>Explore security monitoring and event management concepts.</p>
+            <a href="https://www.splunk.com/en_us/training.html" target="_blank" rel="noopener noreferrer">Learn SIEM</a>
+        </div>
+
+
+        <!-- MACHINE LEARNING ENGINEER -->
+
+        <div class="resource-card" data-skill="Statistics" data-careers="machinelearning">
+            <h3>Statistics</h3>
+            <p>Learn statistical concepts used in data science.</p>
+            <a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener noreferrer">Learn Statistics</a>
+        </div>
+
+        <div class="resource-card" data-skill="Machine Learning" data-careers="machinelearning">
+            <h3>Machine Learning</h3>
+            <p>Understand machine learning concepts and models.</p>
+            <a href="https://developers.google.com/machine-learning/crash-course" target="_blank" rel="noopener noreferrer">Learn Machine Learning</a>
+        </div>
+
+        <div class="resource-card" data-skill="TensorFlow" data-careers="machinelearning">
+            <h3>TensorFlow</h3>
+            <p>Learn how to build machine learning models.</p>
+            <a href="https://www.tensorflow.org/tutorials" target="_blank" rel="noopener noreferrer">Learn TensorFlow</a>
+        </div>
+
+
+        <!-- UI/UX DESIGNER -->
+
+        <div class="resource-card" data-skill="Figma" data-careers="uiux">
+            <h3>Figma</h3>
+            <p>Learn digital interface design using Figma.</p>
+            <a href="https://help.figma.com/" target="_blank" rel="noopener noreferrer">Learn Figma</a>
+        </div>
+
+        <div class="resource-card" data-skill="Wireframing" data-careers="uiux">
+            <h3>Wireframing</h3>
+            <p>Learn how to create website and app wireframes.</p>
+            <a href="https://www.figma.com/resource-library/" target="_blank" rel="noopener noreferrer">Learn Wireframing</a>
+        </div>
+
+        <div class="resource-card" data-skill="Prototyping" data-careers="uiux">
+            <h3>Prototyping</h3>
+            <p>Understand how to create interactive design prototypes.</p>
+            <a href="https://help.figma.com/" target="_blank" rel="noopener noreferrer">Learn Prototyping</a>
+        </div>
+
+        <div class="resource-card" data-skill="User Research" data-careers="uiux">
+            <h3>User Research</h3>
+            <p>Learn how to understand user needs and behavior.</p>
+            <a href="https://www.nngroup.com/articles/" target="_blank" rel="noopener noreferrer">Learn User Research</a>
+        </div>
+
+        <div class="resource-card" data-skill="Visual Design" data-careers="uiux">
+            <h3>Visual Design</h3>
+            <p>Explore visual design principles, layouts and typography.</p>
+            <a href="https://www.canva.com/designschool/" target="_blank" rel="noopener noreferrer">Learn Visual Design</a>
+        </div>
+
+
+        <!-- FULL STACK DEVELOPER -->
+
+        <div class="resource-card" data-skill="Node.js" data-careers="fullstack">
+            <h3>Node.js</h3>
+            <p>Learn server-side JavaScript development.</p>
+            <a href="https://nodejs.org/en/learn" target="_blank" rel="noopener noreferrer">Learn Node.js</a>
+        </div>
+
+        <div class="resource-card" data-skill="Express" data-careers="fullstack">
+            <h3>Express</h3>
+            <p>Learn how to build web applications using Express.</p>
+            <a href="https://expressjs.com/en/starter/installing.html" target="_blank" rel="noopener noreferrer">Learn Express</a>
+        </div>
+
+
+        <!-- CLOUD ENGINEER -->
+
+        <div class="resource-card" data-skill="AWS" data-careers="cloud">
+            <h3>AWS</h3>
+            <p>Explore cloud computing and Amazon Web Services.</p>
+            <a href="https://skillbuilder.aws/" target="_blank" rel="noopener noreferrer">Learn AWS</a>
+        </div>
+
+        <div class="resource-card" data-skill="Docker" data-careers="cloud">
+            <h3>Docker</h3>
+            <p>Learn containerization and application deployment basics.</p>
+            <a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener noreferrer">Learn Docker</a>
+        </div>
+
+
+        <!-- No Results Message -->
+
+        <div id="noResults">
+            No matching learning resources found.
+        </div>
+
+    </section>
+
+
+    <!-- Back to Roadmap -->
+
+    <section class="roadmap-action">
+
+        <a href="{{ url_for('roadmap') }}" class="resource-btn">
+            Back to Learning Roadmap
+        </a>
+
+    </section>
+
+
+    <!-- Search and Filtering JavaScript -->
+
+    <script>
+
+        const searchInput = document.getElementById("resourceSearch");
+        const careerFilter = document.getElementById("careerFilter");
+
+        const resourceCards = document.querySelectorAll(
+            ".resource-card[data-skill]"
+        );
+
+        const noResults = document.getElementById("noResults");
+        const resourceCount = document.getElementById("resourceCount");
+
+
+        // Restore the previously selected career
+
+        const savedCareer = localStorage.getItem("selectedCareer");
+
+        if (savedCareer && careerFilter.querySelector(
+            'option[value="' + savedCareer + '"]'
+        )) {
+            careerFilter.value = savedCareer;
+        }
+
+
+        // Filter Resources
+
+        function filterResources() {
+
+            const searchValue = searchInput.value.toLowerCase().trim();
+
+            const selectedCareer = careerFilter.value;
+
+            let visibleCount = 0;
+
+            resourceCards.forEach(function(card) {
+
+                const skill = card.getAttribute("data-skill");
+
+                const skillName = skill.toLowerCase();
+
+                const careerList = card
+                    .getAttribute("data-careers")
+                    .split(" ");
+
+                // Check search input
+
+                const matchesSearch =
+                    skillName.includes(searchValue);
+
+                // Check selected career
+
+                const matchesCareer =
+                    selectedCareer === "all" ||
+                    careerList.includes(selectedCareer);
+
+                // Only search and career filters are applied
+
+                const shouldShow =
+                    matchesSearch && matchesCareer;
+
+                card.style.display = shouldShow ? "block" : "none";
+
+                if (shouldShow) {
+                    visibleCount++;
+                }
+
+            });
+
+
+            // Update resource count
+
+            resourceCount.textContent =
+                "Showing " + visibleCount + " learning resources";
+
+
+            // Display no-results message
+
+            noResults.style.display =
+                visibleCount === 0 ? "block" : "none";
+
+        }
+
+
+        // Search Event
+
+        searchInput.addEventListener("input", filterResources);
+
+
+        // Career Filter Event
+
+        careerFilter.addEventListener("change", filterResources);
+
+
+        // Initial Display
+
+        filterResources();
+
+    </script>
+
+</body>
+
+</html>

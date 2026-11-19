@@ -1,0 +1,7 @@
+﻿__pycache__/
+*.pyc
+careerpath.db
+instance/
+.env
+venv/
+.venv/

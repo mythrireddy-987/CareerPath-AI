@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Roadmap | CareerPath AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2>CareerPath AI</h2>
+
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('profile') }}">Dashboard</a>
+        <a href="{{ url_for('roadmap') }}">Learning Roadmap</a>
+        <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+</header>
+
+<section class="roadmap-header">
+    <h1>Your Personalized Learning Roadmap</h1>
+<div class="career-selection">
+    <label for="career">Choose Your Career:</label>
+
+    <select id="career">
+       <option value="">Select Your Career</option>
+
+    <option value="frontend">Frontend Developer</option>
+
+    <option value="python">Python Developer</option>
+
+    <option value="data">Data Analyst</option>
+
+    <option value="cybersecurity">Cybersecurity Analyst</option>
+
+    <option value="machinelearning">Machine Learning Engineer</option>
+
+    <option value="uiux">UI/UX Designer</option>
+
+    <option value="fullstack">Full Stack Developer</option>
+
+    <option value="cloud">Cloud Engineer</option>
+    </select>
+
+    <button id="show-roadmap">Show My Roadmap</button>
+</div>
+    <div class="existing-skills">
+    <h2>Enter Your Existing Skills</h2>
+
+    <input
+        type="text"
+        id="user-skills"
+        placeholder="Example: HTML, CSS, Python"
+    >
+
+    <button id="analyze-skills">Analyze My Skills</button>
+</div>
+<div id="skill-gap-results"></div>
+<div id="career-recommendation">
+    <h3>Recommended Career</h3>
+    <p>Your career recommendation will appear here.</p>
+</div>
+<div id="personalized-roadmap"></div>
+
+
+    <p>Improve your skills and move closer to your dream career.</p>
+</section>
+
+<section class="progress-section">
+
+    <h2>Overall Learning Progress</h2>
+
+    <div class="progress-info">
+        <span>Learning Progress</span>
+        <span id="progress-text">0%</span>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+</section>
+
+<section class="roadmap-container">
+
+    <h2>Skills to Develop</h2>
+<div id="dynamic-skills" class="skills-card"></div>
+
+
+
+    
+        
+
+</section>
+
+<section class="roadmap-action">
+    <a href="/resources" class="resource-btn">Explore Learning Resources</a>
+</section>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

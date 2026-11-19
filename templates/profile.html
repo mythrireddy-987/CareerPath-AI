@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPath AI - Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>CareerPath AI</h1>
+
+        <nav>
+            <a href="{{ url_for('profile') }}">Dashboard</a>
+            <a href="{{ url_for('roadmap') }}">Roadmap</a>
+            <a href="{{ url_for('resources') }}">Resources</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+
+        <section class="dashboard-heading">
+            <h2>My Dashboard</h2>
+            <p>Track your career goals and learning progress.</p>
+        </section>
+
+        <section class="dashboard-cards">
+
+            <div class="dashboard-card">
+                <h3>Selected Career</h3>
+                <p id="careerName">Not selected</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Total Skills</h3>
+                <p id="totalSkills">0</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Completed Skills</h3>
+                <p id="completedSkills">0</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Remaining Skills</h3>
+                <p id="remainingSkills">0</p>
+            </div>
+
+        </section>
+
+        <section class="progress-section">
+            <h2>Overall Learning Progress</h2>
+
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+
+            <p id="progressText">0% Completed</p>
+        </section>
+
+        <section class="skills-section">
+            <h2>My Career Skills</h2>
+
+            <div id="skillsList">
+                <p>Select a career and create a roadmap to see your skills here.</p>
+            </div>
+        </section>
+
+        <section class="dashboard-actions">
+
+            <a href="{{ url_for('roadmap') }}" class="dashboard-button">
+                View My Roadmap
+            </a>
+
+            <a href="{{ url_for('resources') }}" class="dashboard-button">
+                Explore Learning Resources
+            </a>
+
+        </section>
+
+    </main>
+
+<script>
+
+    // 1. SKILLS FOR EIGHT CAREERS
+
+    const careerSkills = {
+        frontend: ["HTML", "CSS", "JavaScript", "React"],
+        python: ["Python", "SQL", "Django", "Git"],
+        data: ["Python", "SQL", "Excel", "Power BI"],
+
+        cybersecurity: [
+            "Networking", "Linux", "Python",
+            "Cybersecurity Fundamentals", "SIEM"
+        ],
+
+        machinelearning: [
+            "Python", "Statistics", "Machine Learning",
+            "SQL", "TensorFlow"
+        ],
+
+        uiux: [
+            "Figma", "Wireframing", "Prototyping",
+            "User Research", "Visual Design"
+        ],
+
+        fullstack: [
+            "HTML", "CSS", "JavaScript", "React",
+            "Node.js", "Express", "SQL", "Git"
+        ],
+
+        cloud: ["Linux", "Networking", "AWS", "Docker", "Git"]
+    };
+
+
+    // 2. CAREER NAMES
+
+    const careerNames = {
+        frontend: "Frontend Developer",
+        python: "Python Developer",
+        data: "Data Analyst",
+        cybersecurity: "Cybersecurity Analyst",
+        machinelearning: "Machine Learning Engineer",
+        uiux: "UI/UX Designer",
+        fullstack: "Full Stack Developer",
+        cloud: "Cloud Engineer"
+    };
+
+
+    // 3. DASHBOARD ELEMENTS
+
+    const careerNameElement = document.getElementById("careerName");
+    const totalSkillsElement = document.getElementById("totalSkills");
+    const completedSkillsElement = document.getElementById("completedSkills");
+    const remainingSkillsElement = document.getElementById("remainingSkills");
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+    const skillsList = document.getElementById("skillsList");
+
+
+    // 4. LOAD DASHBOARD FROM SQLITE DATABASE
+
+    async function loadDashboard() {
+
+        try {
+
+            const response = await fetch("/api/progress", {
+                cache: "no-store"
+            });
+
+            if (!response.ok) {
+                throw new Error("Unable to retrieve progress.");
+            }
+
+            const data = await response.json();
+
+            const selectedCareer = data.selectedCareer;
+
+            const savedProgress = data.progress || {};
+
+
+            // Check selected career
+
+            if (!selectedCareer || !careerSkills[selectedCareer]) {
+
+                careerNameElement.textContent = "Not selected";
+                totalSkillsElement.textContent = "0";
+                completedSkillsElement.textContent = "0";
+                remainingSkillsElement.textContent = "0";
+
+                progressFill.style.width = "0%";
+                progressText.textContent = "0% Completed";
+
+                skillsList.innerHTML =
+                    "<p>Please select a career and create your roadmap first.</p>";
+
+                return;
+            }
+
+
+            // Get career skills
+
+            const skills = careerSkills[selectedCareer];
+
+            const total = skills.length;
+
+            const careerProgress = savedProgress[selectedCareer] || {};
+
+            let completed = 0;
+
+
+            // Count completed skills from database
+
+            skills.forEach(function(skill) {
+
+                if (careerProgress[skill] === true) {
+                    completed++;
+                }
+
+            });
+
+
+            // Calculate progress
+
+            const remaining = total - completed;
+
+            const percentage = Math.round(
+                (completed / total) * 100
+            );
+
+
+            // Update dashboard cards
+
+            careerNameElement.textContent = careerNames[selectedCareer];
+
+            totalSkillsElement.textContent = total;
+
+            completedSkillsElement.textContent = completed;
+
+            remainingSkillsElement.textContent = remaining;
+
+
+            // Update progress bar
+
+            progressFill.style.width = percentage + "%";
+
+            progressText.textContent = percentage + "% Completed";
+
+
+            // Display individual skills
+
+            skillsList.innerHTML = "";
+
+            skills.forEach(function(skill) {
+
+                const isCompleted = careerProgress[skill] === true;
+
+                const skillItem = document.createElement("div");
+
+                skillItem.className = "dashboard-skill";
+
+
+                const skillName = document.createElement("span");
+
+                skillName.textContent = skill;
+
+
+                const skillStatus = document.createElement("span");
+
+                skillStatus.textContent = isCompleted
+                    ? "Completed"
+                    : "Not Completed";
+
+                skillStatus.className = isCompleted
+                    ? "skill-completed"
+                    : "skill-pending";
+
+
+                skillItem.appendChild(skillName);
+
+                skillItem.appendChild(skillStatus);
+
+                skillsList.appendChild(skillItem);
+
+            });
+
+
+        } catch (error) {
+
+            console.error("Dashboard loading error:", error);
+
+            skillsList.innerHTML =
+                "<p>Unable to load progress. Please refresh the page.</p>";
+
+        }
+
+    }
+
+
+    // 5. LOAD DASHBOARD WHEN PAGE OPENS
+
+    loadDashboard();
+
+
+    // 6. REFRESH WHEN RETURNING TO DASHBOARD
+
+    window.addEventListener("pageshow", loadDashboard);
+
+    window.addEventListener("focus", loadDashboard);
+
+
+    // 7. REFRESH WHEN PAGE BECOMES VISIBLE
+
+    document.addEventListener("visibilitychange", function() {
+
+        if (!document.hidden) {
+            loadDashboard();
+        }
+
+    });
+
+
+    // 8. AUTOMATICALLY REFRESH EVERY 3 SECONDS
+
+    setInterval(function() {
+
+        if (!document.hidden) {
+            loadDashboard();
+        }
+
+    }, 3000);
+
+</script>
+   
+
+</body>
+</html>

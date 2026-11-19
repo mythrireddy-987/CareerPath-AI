@@ -1,0 +1,855 @@
+/* GENERAL STYLING */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6fc;
+    color: #263238;
+    line-height: 1.6;
+}
+
+/* NAVIGATION BAR */
+
+.navbar {
+    background: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.navbar h2 {
+    color: #273c75;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #4b5bdc;
+}
+
+/* PAGE HEADER */
+
+.roadmap-header {
+    text-align: center;
+    padding: 45px 20px;
+    background: #e8edff;
+}
+
+.roadmap-header h1 {
+    color: #273c75;
+    margin-bottom: 15px;
+}
+
+/* COMMON SECTIONS */
+
+.progress-section,
+.roadmap-container {
+    background: white;
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.progress-section h2,
+.roadmap-container h2 {
+    margin-bottom: 20px;
+    color: #273c75;
+}
+
+/* PROGRESS BAR */
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 14px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #4b5bdc;
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+/* SKILL CARDS */
+
+.skill-card {
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fafbff;
+}
+
+.skill-card h3 {
+    color: #273c75;
+    margin-bottom: 8px;
+}
+
+.skill-card p {
+    margin-bottom: 12px;
+    color: #555;
+}
+
+/* SKILL STATUS */
+
+.completed {
+    color: green;
+    font-weight: bold;
+}
+
+.in-progress {
+    color: #e69500;
+    font-weight: bold;
+}
+
+.pending {
+    color: #777;
+    font-weight: bold;
+}
+
+/* ROADMAP BUTTON */
+
+.roadmap-action {
+    text-align: center;
+    margin: 30px;
+}
+
+.resource-btn {
+    display: inline-block;
+    padding: 13px 25px;
+    background: #4b5bdc;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+
+.resource-btn:hover {
+    background: #273c75;
+}
+
+/* LEARNING RESOURCES */
+
+.resource-card {
+    background: #fafbff;
+    padding: 22px;
+    margin-bottom: 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.resource-card h3 {
+    color: #273c75;
+    margin-bottom: 10px;
+}
+
+.resource-card p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.resource-card a {
+    display: inline-block;
+    background: #4b5bdc;
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.resource-card a:hover {
+    background: #273c75;
+}
+
+/* EXISTING SKILLS */
+
+.existing-skills {
+    margin: 25px 0;
+    padding: 20px;
+    background: #f5f7ff;
+    border-radius: 12px;
+}
+
+.existing-skills h2 {
+    margin-bottom: 15px;
+    color: #26345c;
+}
+
+.existing-skills input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.existing-skills button {
+    padding: 12px 20px;
+    background: #3156d9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.existing-skills button:hover {
+    background: #203fae;
+}
+
+/* SKILL GAP RESULTS */
+
+#skill-gap-results {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff7ed;
+    border-left: 5px solid #f97316;
+    border-radius: 10px;
+}
+
+#skill-gap-results h3 {
+    color: #c2410c;
+    margin-bottom: 10px;
+}
+
+#skill-gap-results p {
+    color: #444;
+}
+
+/* CAREER RECOMMENDATION */
+
+#career-recommendation {
+    background: #e8f4ff;
+    border-left: 5px solid #2563eb;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+#career-recommendation h3 {
+    color: #1d4ed8;
+    margin-bottom: 10px;
+}
+
+/* PERSONALIZED ROADMAP */
+
+#personalized-roadmap {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f5f7ff;
+    border-radius: 12px;
+}
+
+#personalized-roadmap h3 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+#personalized-roadmap .skill-card {
+    background: white;
+    padding: 18px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border-left: 5px solid #3156d9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .progress-section,
+    .roadmap-container {
+        margin: 20px 12px;
+        padding: 20px;
+    }
+}
+
+/* ==================================
+   LOGIN AND REGISTRATION PAGE
+================================== */
+
+.roadmap-container:has(form) {
+    max-width: 450px;
+    margin: 70px auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.roadmap-container:has(form) h1 {
+    color: #273c75;
+    margin-bottom: 12px;
+}
+
+.roadmap-container:has(form) p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.roadmap-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.roadmap-container form input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d5d9e2;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.roadmap-container form input:focus {
+    border-color: #4b5bdc;
+    box-shadow: 0 0 5px rgba(75, 91, 220, 0.2);
+}
+
+.roadmap-container form button {
+    padding: 13px;
+    background: #4b5bdc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.roadmap-container form button:hover {
+    background: #273c75;
+}
+
+.roadmap-container:has(form) a {
+    color: #4b5bdc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.roadmap-container:has(form) a:hover {
+    text-decoration: underline;
+}
+
+/* ==================================
+   DASHBOARD PAGE
+================================== */
+
+.roadmap-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: #273c75;
+    color: white;
+    border-radius: 0 0 15px 15px;
+}
+
+.roadmap-header h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.roadmap-header p {
+    font-size: 16px;
+}
+
+.roadmap-container .resource-card {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.roadmap-container .resource-card:hover {
+    transform: translateY(-4px);
+}
+
+.roadmap-container .resource-card h3 {
+    color: #273c75;
+    margin-bottom: 12px;
+}
+
+.roadmap-container .resource-card p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.roadmap-container .resource-card a {
+    display: inline-block;
+    background: #4b5bdc;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+.roadmap-container .resource-card a:hover {
+    background: #273c75;
+}
+
+/* ==================================
+   RESPONSIVE DESIGN
+================================== */
+
+@media (max-width: 600px) {
+
+    .roadmap-container:has(form) {
+        width: 85%;
+        margin: 35px auto;
+        padding: 22px;
+    }
+
+    .roadmap-header h1 {
+        font-size: 24px;
+    }
+}
+
+/* CAREER PROGRESS ANALYTICS */
+
+.dashboard-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.welcome-section,
+.analytics-section,
+.progress-section,
+.activities-section,
+.dashboard-actions {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.analytics-card {
+    background: #f1f3ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.analytics-card h3 {
+    color: #273c75;
+    font-size: 16px;
+}
+
+.analytics-card p {
+    color: #4b5bdc;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 18px;
+    background: #e0e0e0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+#dashboard-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #4b5bdc;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+#dashboard-progress-text {
+    color: #273c75;
+    font-size: 26px;
+}
+
+#readiness-status {
+    margin-top: 12px;
+    color: #444;
+}
+
+.dashboard-button {
+    display: inline-block;
+    background: #4b5bdc;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.dashboard-button:hover {
+    background: #273c75;
+}
+
+/* SMART CAREER RECOMMENDATIONS */
+
+.recommendation-card {
+    background: #f1f3ff;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    border-left: 5px solid #4b5bdc;
+}
+
+.recommendation-card h3 {
+    color: #273c75;
+    margin-bottom: 12px;
+}
+
+.recommendation-card p {
+    margin: 8px 0;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* =========================================
+   MODERN CAREERPATH AI DASHBOARD DESIGN
+========================================= */
+
+/* Dashboard Navigation */
+
+body:has(.dashboard-container) header {
+    background: #ffffff;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+body:has(.dashboard-container) header h1 {
+    color: #273c75;
+    font-size: 25px;
+}
+
+body:has(.dashboard-container) header nav {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+body:has(.dashboard-container) header nav a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+body:has(.dashboard-container) header nav a:hover {
+    color: #4b5bdc;
+}
+
+/* Dashboard Main Container */
+
+.dashboard-container {
+    width: 90%;
+    max-width: 1150px;
+    margin: 40px auto;
+}
+
+/* Dashboard Heading */
+
+.dashboard-heading {
+    background: linear-gradient(135deg, #273c75, #5268d8);
+    color: white;
+    padding: 35px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 18px rgba(39, 60, 117, 0.15);
+}
+
+.dashboard-heading h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.dashboard-heading p {
+    color: #e4e9ff;
+    font-size: 15px;
+}
+
+/* Dashboard Statistics Cards */
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 25px 18px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-bottom: 4px solid #4b5bdc;
+    transition: 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
+}
+
+.dashboard-card h3 {
+    color: #596579;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.dashboard-card p {
+    color: #273c75;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+/* Learning Progress Section */
+
+.dashboard-container .progress-section {
+    max-width: 100%;
+    margin: 0 0 30px;
+    padding: 30px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-container .progress-section h2 {
+    color: #273c75;
+    margin-bottom: 20px;
+    font-size: 21px;
+}
+
+.dashboard-container .progress-bar {
+    width: 100%;
+    height: 18px;
+    background: #e8ecf7;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.dashboard-container .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4b5bdc, #7888ff);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.dashboard-container #progressText {
+    margin-top: 12px;
+    color: #4b5bdc;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* Career Skills Section */
+
+.skills-section {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.skills-section h2 {
+    color: #273c75;
+    margin-bottom: 22px;
+    font-size: 21px;
+}
+
+/* Individual Skill Cards */
+
+.dashboard-skill {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: #f7f8ff;
+    padding: 17px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border-left: 4px solid #4b5bdc;
+    transition: 0.3s;
+}
+
+.dashboard-skill:hover {
+    background: #eef1ff;
+    transform: translateX(4px);
+}
+
+.dashboard-skill span:first-child {
+    color: #273c75;
+    font-weight: 600;
+}
+
+.skill-completed {
+    color: #16834a;
+    font-weight: bold;
+    background: #e2f7eb;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.skill-pending {
+    color: #b7791f;
+    font-weight: bold;
+    background: #fff4dc;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* Dashboard Action Buttons */
+
+.dashboard-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-actions a {
+    display: inline-block;
+    background: #4b5bdc;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.dashboard-actions a:hover {
+    background: #273c75;
+    transform: translateY(-2px);
+}
+
+/* DASHBOARD RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    body:has(.dashboard-container) header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    body:has(.dashboard-container) header nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .dashboard-container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .dashboard-heading {
+        padding: 25px 20px;
+    }
+
+    .dashboard-heading h2 {
+        font-size: 23px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 20px;
+    }
+
+    .skills-section {
+        padding: 20px;
+    }
+
+    .dashboard-skill {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dashboard-actions a {
+        text-align: center;
+    }
+}
