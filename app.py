@@ -519,10 +519,10 @@ def logout():
 # =====================================================
 # 15. RUN FLASK APPLICATION
 # =====================================================
-
+init_db()
 if __name__ == "__main__":
 
-    init_db()
+
 
     print("Starting CareerPath AI...")
 
